@@ -243,6 +243,10 @@ class Connection(object):
 
         while True:
             line = self._socket_file.readline().decode('utf-8')
+
+            if not line:
+                raise SocketError("Socket disconnected")
+
             lines.append(line)
 
             if line.endswith("\r\n"):
