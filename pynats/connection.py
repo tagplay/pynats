@@ -144,9 +144,9 @@ class Connection(object):
             msg = ''
 
         if reply is None:
-            command = 'PUB %s %d' % (subject, len(msg))
+            command = 'PUB %s %d' % (subject, len(msg.encode('utf-8')))
         else:
-            command = 'PUB %s %s %d' % (subject, reply, len(msg))
+            command = 'PUB %s %s %d' % (subject, reply, len(msg.encode('utf-8')))
 
         self._send(command)
         self._send(msg)
